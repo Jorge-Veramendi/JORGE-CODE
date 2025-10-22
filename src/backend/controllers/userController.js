@@ -45,7 +45,7 @@ export const userController = {
             const {id} = req.params;
             const updateData = req.body;
 
-            const updateUser = await userService.updateUser(id, UpdateData);
+            const updateUser = await userService.updateUser(id, updateData);
             res.status(200).json({
                 sucess:true,
                 data: updateUser,
