@@ -64,6 +64,7 @@ router.get("/", userController.getUsers);
  *          500: 
  *              description: Error del servidor
  */
+router.post("/", userController.createUser);
 
 /**
  * @swagger
@@ -117,7 +118,7 @@ router.get("/", userController.getUsers);
 router.put('/:id', userController.updateUser);
 
 
-router.post("/", userController.createUser);
+
 
 /**
  * 
