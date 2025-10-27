@@ -117,6 +117,70 @@ router.post("/", userController.createUser);
  */
 router.put('/:id', userController.updateUser);
 
+/**
+
+ * @swagger
+
+ * /api/users/{id}:
+
+ * delete:
+
+ *  summary: Eliminar un usuario por ID
+
+ *  tags: [User]
+
+ *  parameters:
+
+ *   - in: path
+
+ *    name: id
+
+ *    schema:
+
+ *     type: integer
+
+ *    required: true
+
+ *    description: ID del usuario a eliminar
+
+ *  responses:
+
+ *   200:
+
+ *    description: Usuario eliminado correctamente
+
+ *    content:
+
+ *     application/json:
+
+ *      schema:
+
+ *       type: object
+
+ *       properties:
+
+ *        success:
+
+ *         type: boolean
+
+ *         example: true
+
+ *        message:
+
+ *         type: string
+
+ *         example: Usuario eliminado correctamente
+
+ *   404:
+
+ *    description: Usuario no encontrado
+
+ *   500:
+
+ *    description: Error del servidor
+
+ */
+router.delete('/:id', userController.deleteUser);
 
 
 
