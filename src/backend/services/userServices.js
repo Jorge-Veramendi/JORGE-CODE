@@ -1,38 +1,55 @@
-import {PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient;
+const prisma = new PrismaClient();
 
-export const userService ={
-    //Crear usuarios
-    async createUser(data){
-        try{
-            const {email, name} = data;
-            return await prisma.user.create({
-                data :{email, name}
-            })
-        }catch(error){
-            throw error('Error al crear usuario' + error.message);
-        }
-    },
-
-    //Obtener usuarios
-    async getAllUsers(){
-        try{
-            return await prisma.user.findMany();
-        }catch(error){
-            throw error ('Error al obtener usuarios' + error.message);
-        }
-    },   
-    
-    //Actualizar usuario
-    async updateUser(id, data){
-        try{
-            return await prisma.user.update({
-                where: {id:parseInt(id)},
-                data: data 
-            });
-        }catch(error){
-            throw error ('Error al actualizar usuario'+ error.message)
-        }
+export const userService = {
+  //Crear usuarios
+  async createUser(data) {
+    try {
+      const { email, name } = data;
+      return await prisma.user.create({
+        data: { email, name },
+      });
+    } catch (error) {
+      throw error("Error al crear usuario" + error.message);
     }
-}
+  },
+
+  //Obtener usuarios
+  async getAllUsers() {
+    try {
+      return await prisma.user.findMany();
+    } catch (error) {
+      throw error("Error al obtener usuarios" + error.message);
+    }
+  },
+
+  //Actualizar usuario
+  async updateUser(id, data) {
+    try {
+      return await prisma.user.update({
+        where: { id: parseInt(id) },
+        data: data,
+      });
+    } catch (error) {
+      throw error("Error al actualizar usuario" + error.message);
+    }
+  },
+
+  async deleteUser(id) {
+    try {
+      const user = await prisma.user.findUnique({
+        where: { id: parseInt(id) },
+      });
+      if (!user) {
+        throw new Error("Usuario no encontrado");
+      }
+
+      await prisma.user.delete({
+        where: { id: parseInt(id) },
+      });
+    } catch (error) {
+      throw new Error("Error al eliminar usuario: " + error.message);
+    }
+  },
+};

@@ -1,32 +1,33 @@
 import express from 'express';
-import { emailController, registerUser } from '../controllers/emailController.js';
+import { registerUser } from '../controllers/emailController.js';
 
 const router = express.Router();
+
 /**
  * @swagger
- * /api/register:
- * post:
- *  summary: Registrar usuario y enviar
- *  tags: [Email]
- *  requestBody:
- *      required: true
- *      content:
- *          application/json:
- *              schema:
- *                  type: object
- *                  properties:
- *                      email:
- *                          type: string
- *                          example:usuario1@gmailcom
- *                      name:
- *                          type: string
- *                          example: paquita la del barrio
+ * /api/email/register:
+ *  post:
+ *      summary: Registrar usuario nuevo
+ *      tags: [Email]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          email:
+ *                              type: string
+ *                              example: fazedesantin6@gmail.com
+ *                          name:
+ *                              type: string
+ *                              example: yo
  *  responses:
  *      200:
- *          descripcion: Email enviado correctamente
+ *          descripcion: Email enviado
  * 
  *      500:
- *          descripcion: Error del servicio al enviar email
+ *          descripcion: Error del servicio
  */
 
 router.post('/register', registerUser)

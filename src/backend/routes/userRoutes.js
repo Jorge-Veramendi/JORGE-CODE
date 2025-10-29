@@ -1,5 +1,5 @@
-import express from 'express';
-import { userController } from '../controllers/userController.js';
+import express from "express";
+import { userController } from "../controllers/userController.js";
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ const router = express.Router();
  *              name:
  *                  type: string
  *                  example: Jorge
- *      
+ *
  */
 
 /**
@@ -49,7 +49,7 @@ router.get("/", userController.getUsers);
  *                      properties:
  *                          email:
  *                              type: string
- *                              example: jorgeveramendi@gmail.com   
+ *                              example: jorgeveramendi@gmail.com
  *                          name:
  *                              type: string
  *                              example: Jorge
@@ -61,7 +61,7 @@ router.get("/", userController.getUsers);
  *                      $ref: '#/components/schemas/User'
  *          400:
  *              description: Datos invalidos
- *          500: 
+ *          500:
  *              description: Error del servidor
  */
 router.post("/", userController.createUser);
@@ -115,52 +115,50 @@ router.post("/", userController.createUser);
  *       500:
  *         description: Error del servidor
  */
-router.put('/:id', userController.updateUser);
+router.put("/:id", userController.updateUser);
 
 /**
  * @swagger
  * /api/users/{id}:
- * delete:
- *  summary: Eliminar un usuario por ID
- *  tags: [User]
- *  parameters:
- *   - in: path
- *    name: id
- *    schema:
- *     type: integer
- *    required: true
- *    description: ID del usuario a eliminar
- *  responses:
- *   200:
- *    description: Usuario eliminado correctamente
- *    content:
- *     application/json:
- *      schema:
- *       type: object
- *       properties:
- *        success:
- *         type: boolean
- *         example: true
- *        message:
- *         type: string
- *         example: Usuario eliminado correctamente
- *   404:
- *    description: Usuario no encontrado
- *   500:
- *    description: Error del servidor
+ *   delete:
+ *     summary: Eliminar un usuario por ID
+ *     tags: [Users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID del usuario a eliminar
+ *     responses:
+ *       200:
+ *         description: Usuario eliminado correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: Usuario eliminado correctamente
+ *       404:
+ *         description: Usuario no encontrado
+ *       500:
+ *         description: Error del servidor
  */
-router.delete('/:id', userController.deleteUser);
-
-
+router.delete("/:id", userController.deleteUser);
 
 /**
- * 
+ *
  */
 
 //Rutas para llamar al usuario
-router.get('/',userController.getUsers);
-router.post('/',userController.createUser);
-router.put('/:id',userController.updateUser);
+router.get("/", userController.getUsers);
+router.post("/", userController.createUser);
+router.put("/:id", userController.updateUser);
 
 //metodo para eliminar DELETE
 //metodo para actualizar PUT
