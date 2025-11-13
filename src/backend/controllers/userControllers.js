@@ -1,6 +1,6 @@
 import  {userService} from '../services/userServices.js';
 
-export const userController = {
+export const userControllers = {
     async getUsers(req, res){
         try{
             const users = await userService.getAllUsers();
@@ -40,45 +40,41 @@ export const userController = {
         }
     },
 
-    async updateUser (req, res){
-        try{
-            const {id} = req.params;
+    async updateUser(req, res) {
+        try {
+            const { id } = req.params;
             const updateData = req.body;
 
-            const updateUser = await userService.updateUser(id, updateData);
-            res.status(200).json({
-                sucess:true,
-                data: updateUser,
-                message: "Usuario actualizado correctamente"
-            })
-        }catch(error){
-            res.status(500).json({
-                sucess: false,
-                message: error.message
-            })
-        }
-    },
-
-    async deleteUser(req, res){
-        try{
-            const { id } = req.params;
-            await userService.deleteUser(id);
+            const updatedUser = await userService.updateUser(id, updateData);
+            
             res.status(200).json({
                 success: true,
-                message: 'Usuario eliminado correctamente'
+                data: updatedUser,
+                message: 'Usuario actualizado exitosamente'
             });
-        }catch(error){
-            if (error.message.includes('no encontrado')) {
-                return res.status(404).json({
+        } catch (error) {
+            res.status(500).json({
                 success: false,
                 message: error.message
             });
         }
-        res.status(500).json({
-            success: false,
-            message: error.message
-        });
+    },
+
+    async deleteUser(req, res) {
+        try {
+            const { id } = req.params;
+
+            await userService.deleteUser(id);
+            
+            res.status(200).json({
+                success: true,
+                message: 'Usuario eliminado correctamente'
+            });
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: error.message
+            });
         }
     }
-    
 }
