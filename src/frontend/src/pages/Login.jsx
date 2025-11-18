@@ -119,6 +119,12 @@ function Login() {
             Suscribete Aqui
           </Link>
         </p>
+
+        <Link
+            to="/recuperar"
+            className="block text-center text-sm font-medium text-blue-600 hover:text-blue-500 mt-2">
+            ¿Olvidaste tu contraseña?
+        </Link>
       </div>
     </div>
   );

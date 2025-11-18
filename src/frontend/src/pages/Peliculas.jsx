@@ -112,34 +112,64 @@ function Peliculas() {
         {popularMovies.length > 0 ? (
           <>
             {popularMovies.map((movie, index) => (
-              <div
+              <Link
+                to={`/detalles/${movie.id}`}
                 key={movie.id}
-                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-                  index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
+                className="absolute inset-0 block"
               >
-                <img
-                  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                  alt={movie.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/60"></div>
+                <div
+                  className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                    index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                    alt={movie.title}
+                    className="w-full h-full object-cover hover:opacity-60 transition-all"
+                  />
+                  <div className="absolute inset-0 bg-black/60"></div>
 
-                {index === currentIndex && (
-                  <div className="absolute bottom-24 left-12 z-30 max-w-2xl">
-                    <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">
-                      {movie.title}
-                    </h1>
-                    <p className="text-gray-300 mb-6 text-lg max-w-xl line-clamp-3 drop-shadow-md">
-                      {movie.overview || "Sin descripción disponible."}
-                    </p>
-                    <button className="bg-white text-black px-5 py-2 rounded-md font-semibold hover:bg-gray-200 transition">
-                      ▶ Ver
-                    </button>
-                  </div>
-                )}
-              </div>
+                  {index === currentIndex && (
+                    <div className="absolute bottom-24 left-12 z-30 max-w-2xl">
+                      <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">
+                        {movie.title}
+                      </h1>
+                      <p className="text-gray-300 mb-6 text-lg max-w-xl line-clamp-3 drop-shadow-md">
+                        {movie.overview || "Sin descripción disponible."}
+                      </p>
+                      <button className="bg-white text-black px-5 py-2 rounded-md font-semibold hover:bg-gray-200 transition">
+                        ▶ Ver
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </Link>
             ))}
+
+             <button
+              onClick={() =>
+                setCurrentIndex((prev) =>
+                  prev === 0 ? popularMovies.length - 1 : prev - 1
+                )
+              }
+              className="absolute left-5 top-1/2 -translate-y-1/2 bg-transparent text-white p-4 rounded-full z-40 text-2xl"
+            >
+              <img src="/atrasador.svg" alt="Atras" className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={() =>
+                setCurrentIndex((prev) =>
+                  popularMovies.length > 0
+                    ? (prev + 1) % popularMovies.length
+                    : 0
+                )
+              }
+              className="absolute right-5 top-1/2 -translate-y-1/2 bg-transparent text-white p-4 rounded-full z-40 text-2xl"
+            >
+              <img src="/siguientes.svg" alt="Siguiente" className="w-6 h-6" />
+            </button>
+
           </>
         ) : (
           <p className="text-gray-400">Cargando...</p>
@@ -176,9 +206,10 @@ function Section({ title, data, id }) {
             <p className="text-gray-400">Cargando...</p>
           ) : (
             data.map((movie) => (
-              <div
+              <Link
+                to={`/detalles/${movie.id}`}
                 key={movie.id}
-                className="w-40 h-60 flex-shrink-0 rounded-lg relative"
+                className="w-40 h-60 flex-shrink-0 rounded-lg relative hover:opacity-80 transition cursor-pointer"
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -188,7 +219,7 @@ function Section({ title, data, id }) {
                 <div className="absolute bottom-0 w-full bg-black/60 p-2 text-sm font-semibold text-white">
                   {movie.title}
                 </div>
-              </div>
+              </Link>
             ))
           )}
         </div>

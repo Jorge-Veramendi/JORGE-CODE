@@ -7,6 +7,11 @@ import LoginError from './pages/LoginError';
 import Inicio from './pages/Inicio';
 import Series from './pages/Series';
 import Peliculas from './pages/Peliculas';
+import Detalles from './pages/Detalles';
+import Recuperar from './pages/Recuperar';
+import CorreoEnviado from "./pages/CorreoEnviado";
+import Buscar from "./pages/Buscar";
+
 
 function App() {
   return (
@@ -20,6 +25,10 @@ function App() {
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/series" element={<Series />} />
         <Route path="/peliculas" element={<Peliculas />} />
+        <Route path="/detalles/:id" element={<Detalles />} />
+        <Route path="/recuperar" element={<Recuperar />} />
+        <Route path="/correo-enviado" element={<CorreoEnviado />} />
+        <Route path="/buscar" element={<Buscar />} />
       </Routes> 
     </BrowserRouter>
   );
