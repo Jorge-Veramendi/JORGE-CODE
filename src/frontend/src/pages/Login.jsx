@@ -36,7 +36,7 @@ function Login() {
   return (
     <div
       className="flex items-center justify-center min-h-screen bg-gray-900 bg-cover bg-center relative"
-      style={{ backgroundImage: 'url("waos.12.jpeg")' }}
+      style={{ backgroundImage: 'url("/porta-1v2.jpg")' }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>{" "}
       <div

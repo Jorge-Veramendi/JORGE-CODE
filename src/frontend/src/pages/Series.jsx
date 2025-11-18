@@ -102,7 +102,7 @@ function Series() {
           <>
             {popularSeries.map((serie, index) => (
               <Link
-                to={`/detalles/${serie.id}`}
+                to={`/detalles/${serie.id}?type=tv`}
                 key={serie.id}
                 className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
                   index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
@@ -193,7 +193,7 @@ function Section({ title, data, id }) {
           ) : (
             data.map((serie) => (
               <Link
-                to={`/detalles/${serie.id}`}
+                to={`/detalles/${serie.id}?type=tv`}
                 key={serie.id}
                 className="w-40 h-60 flex-shrink-0 rounded-lg relative group"
               >

@@ -41,7 +41,7 @@ function Register() {
     <div
       className="flex items-center justify-center min-h-screen"
       style={{
-        backgroundImage: 'url("waos.12.jpeg")', // Asegúrate de poner tu ruta de imagen
+        backgroundImage: 'url("/porta-1v2.jpg")', // Asegúrate de poner tu ruta de imagen
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -54,7 +54,7 @@ function Register() {
         }}
       >
         <h1 className="text-2xl font-bold text-center text-white">
-          Crear una cuenta
+          CREA TU CUENTA
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">

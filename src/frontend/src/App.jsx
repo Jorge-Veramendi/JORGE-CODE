@@ -12,7 +12,6 @@ import Recuperar from './pages/Recuperar';
 import CorreoEnviado from "./pages/CorreoEnviado";
 import Buscar from "./pages/Buscar";
 
-
 function App() {
   return (
     <BrowserRouter>

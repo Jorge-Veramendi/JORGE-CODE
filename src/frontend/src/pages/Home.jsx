@@ -23,7 +23,7 @@ function Home() {
     <div
       className="relative flex flex-col items-center justify-center min-h-screen bg-cover bg-center text-white"
       style={{
-        backgroundImage: "url('/waos.12.jpeg')", // asegúrate que esté en src/public/
+        backgroundImage: "url('/porta-1v2.jpg')", // asegúrate que esté en src/public/
       }}
     >
       {/* Capa oscura encima del fondo */}
